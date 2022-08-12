@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="row">
+      <input type="radio" /> <input type="radio" /> <input type="radio" />
+      <input type="radio" /> <input type="radio" /> <input type="radio" />
+    </div>
+    <div class="row">
+      <input type="radio" /> <input type="radio" /> <input type="radio" />
+      <input type="radio" /> <input type="radio" /> <input type="radio" />
+    </div>
+    <div class="row">
+      <input type="radio" /> <input type="radio" /> <input type="radio" />
+      <input type="radio" /> <input type="radio" /> <input type="radio" />
+    </div>
+    <div class="row">
+      <input type="radio" /> <input type="radio" /> <input type="radio" />
+      <input type="radio" /> <input type="radio" /> <input type="radio" />
+    </div>
+    <div class="row">
+      <input type="radio" /> <input type="radio" /> <input type="radio" />
+      <input type="radio" /> <input type="radio" /> <input type="radio" />
+    </div>
+    <div class="row">
+      <input type="radio" /> <input type="radio" /> <input type="radio" />
+      <input type="radio" /> <input type="radio" /> <input type="radio" />
+    </div>
+    <div class="row">
+      <input type="radio" /> <input type="radio" /> <input type="radio" />
+      <input type="radio" /> <input type="radio" /> <input type="radio" />
+    </div>
+    <div class="row">
+      <input type="radio" /> <input type="radio" /> <input type="radio" />
+      <input type="radio" /> <input type="radio" /> <input type="radio" />
+    </div>
+    <div class="row">
+      <input type="radio" /> <input type="radio" /> <input type="radio" />
+      <input type="radio" /> <input type="radio" /> <input type="radio" />
+    </div>
+    <script>
+      var globalAll = 6;
+      var globalI = 0;
+      // 滑动
+      setInterval(() => {
+        for (globalI; globalI < globalAll; globalI++) {
+          globalI++;
+          console.log(globalI);
+          var and = new Uint8Array(9);
+          for (var i = 0; i < 9; i++) {
+            and[i] = arrary7[i] & ~(0xff >> globalI);
+            and[i] = and[i] | ((arrary2[i] & 0x80) >> globalI);
+            and[i] = and[i] | (arrary2[i] & (0xff >> globalI));
+          }
+          console.log("11111111111");
+          display(and);
+          break;
+        }
+      }, 800);
+
+      var sleep = function (time) {
+        var timeOut = new Date().getTime() + parseInt(time, 10);
+        while (new Date().getTime() <= timeOut) {}
+      };
+      async function display(arrary) {
+        var rows = document.querySelectorAll(".row");
+        for (var i = 0; i < 9; i++) {
+          var byte = rows[i].querySelectorAll("input");
+          for (var j = 0; j < 6; j++) {
+            byte[j].checked = arrary[i] & (0b10000000 >> j);
+          }
+        }
+      }
+      var globalArrar = new Uint8Array(9);
+      // var rows = document.querySelectorAll(".row");
+      // console.log(rows.length);
+      // var byte = rows[0].querySelectorAll("input");
+      // byte[0].checked = true;
+
+      var arrary2 = new Uint8Array(9);
+      /**
+      ~(0xFF >> i)
+      0 0b0000000
+      arrary2[4] & 0xEF
+      1 0b1000000
+      arrary2[3] & 0xEF
+      2 0b1100000
+
+
+**/
+      arrary2[0] = 0b11111100;
+      arrary2[1] = 0b00000100;
+      arrary2[2] = 0b00000100;
+      arrary2[3] = 0b00000100;
+      arrary2[4] = 0b11111100;
+      arrary2[5] = 0b10000000;
+      arrary2[6] = 0b10000000;
+      arrary2[7] = 0b10000000;
+      arrary2[8] = 0b11111100;
+      display(arrary2);
+      var arrary7 = new Uint8Array(9);
+      // arrary7[0] = 0b11111100;
+      // arrary7[1] = 0b10000100;
+      // arrary7[2] = 0b10000100;
+      // arrary7[3] = 0b10000100;
+      // arrary7[4] = 0b11111100;
+      // arrary7[5] = 0b00000100;
+      // arrary7[6] = 0b00000100;
+      // arrary7[7] = 0b00000100;
+      // arrary7[8] = 0b11111100;
+
+      arrary7[0] = 0b11111100;
+      arrary7[1] = 0b00000100;
+      arrary7[2] = 0b00000100;
+      arrary7[3] = 0b00000100;
+      arrary7[4] = 0b00000100;
+      arrary7[5] = 0b00000100;
+      arrary7[6] = 0b00000100;
+      arrary7[7] = 0b00000100;
+      arrary7[8] = 0b00000100;
+      // globalArrar = arrary7;
+    </script>
+  </body>
+</html>
