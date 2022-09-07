@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #main {
+        width: 200px;
+        height: 200px;
+        margin: 0 auto;
+        background-color: aquamarine;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="main"></div>
+    <script>
+      div = document.querySelector("#main");
+      let xhr = new XMLHttpRequest();
+      xhr.open("get", "XHR读取本地文件.html", false);
+      xhr.send(null);
+
+      if ((xhr.status >= 200 && xhr.status < 300) || xhr.status == 304) {
+        div.innerText = xhr.responseText + xhr.readyState;
+      } else {
+        div.innerText = "Request was unsuccessful: " + xhr.status;
+      }
+    </script>
+  </body>
+</html>
